@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - قصص التوبة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --danger-color: #c62828;
+            --light-gray: #f5f5f5;
+            --white: #fff;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+        }
+        
+        #login-page {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        #admin-panel {
+            display: none;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logout-btn {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .stories-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .stories-table th, .stories-table td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .stories-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .stories-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 14px;
+        }
+        
+        .approve-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .reject-btn {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            display: none;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .login-form input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .login-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .stories-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+                .story-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .actions {
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .approve-btn {
+            background: #4CAF50;
+            color: white;
+        }
+        .reject-btn {
+            background: #f44336;
+            color: white;
+        }
+        .loading, .empty, .error {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-page">
+        <h2><i class="fas fa-lock"></i> تسجيل دخول المسؤول</h2>
+        <form id="login-form" class="login-form">
+            <input type="email" id="admin-email" placeholder="البريد الإلكتروني" required>
+            <input type="password" id="admin-password" placeholder="كلمة المرور" required>
+            <button type="submit">دخول</button>
+        </form>
+    </div>
+
+    <div id="admin-panel">
+        <div class="admin-container">
+            <div class="header">
+                <h2><i class="fas fa-user-shield"></i> لوحة تحكم المسؤول</h2>
+                <button id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+            </div>
+            
+            <h3><i class="fas fa-book-open"></i> القصص المعلقة</h3>
+            <div class="table-responsive">
+                <table class="stories-table">
+                    <thead>
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>العنوان</th>
+                            <th>المحتوى</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stories-list">
+                    </tbody>
+                </table>
+                <div id="empty-message" class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>لا توجد قصص معلقة حاليًا</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNXQ2hrBcpXY3BD8JuOqEkO68dnyV1LX4",
+            authDomain: "tawbeh-9cee5.firebaseapp.com",
+            projectId: "tawbeh-9cee5",
+            storageBucket: "tawbeh-9cee5.appspot.com",
+            messagingSenderId: "1093236468990",
+            appId: "1:1093236468990:web:50bd1345164d5d0f7f49af"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        const ADMIN_EMAIL = "zaid.programer334@gmail.com";
+
+        const loginPage = document.getElementById('login-page');
+        const adminPanel = document.getElementById('admin-panel');
+        const loginForm = document.getElementById('login-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const storiesList = document.getElementById('stories-list');
+        const emptyMessage = document.getElementById('empty-message');
+
+        auth.onAuthStateChanged(user => {
+            if (user && user.email === ADMIN_EMAIL) {
+                loginPage.style.display = "none";
+                adminPanel.style.display = "block";
+                loadPendingStories();
+            } else {
+                loginPage.style.display = "block";
+                adminPanel.style.display = "none";
+            }
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+            } catch (error) {
+                alert("خطأ في تسجيل الدخول: " + error.message);
+            }
+        });
+
+        async function updateStoryStatus(storyId, status) {
+            try {
+                if (status === 'approved') {
+                    await db.collection("stories").doc(storyId).update({
+                        status: 'approved',
+                        reviewedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    alert("تم قبول القصة بنجاح وسيتم عرضها في قسم 'قصص توبة ملهمة'");
+                } else if (status === 'rejected') {
+                    await db.collection("stories").doc(storyId).delete();
+                    alert("تم رفض القصة وحذفها بنجاح");
+                }
+                
+                loadPendingStories();
+                
+            } catch (error) {
+                console.error("Error updating story: ", error);
+                alert("حدث خطأ أثناء معالجة القصة: " + error.message);
+            }
+        }
+
+        function setupStoriesListener() {
+            storiesList.innerHTML = '<tr><td colspan="4">جاري التحميل...</td></tr>';
+            
+            db.collection("stories")
+                .where("status", "==", "pending")
+                .onSnapshot(snapshot => {
+                    storiesList.innerHTML = "";
+                    snapshot.docChanges().forEach(change => {
+                        if (change.type === "added") {
+                            addStoryToTable(change.doc);
+                        }
+                        if (change.type === "removed") {
+                            removeStoryFromTable(change.doc.id);
+                        }
+                    });
+                    
+                    if (snapshot.empty) {
+                        emptyMessage.style.display = "block";
+                    } else {
+                        emptyMessage.style.display = "none";
+                    }
+                }, error => {
+                    console.error("Error loading stories: ", error);
+                    storiesList.innerHTML = '<tr><td colspan="4">حدث خطأ في تحميل القصص</td></tr>';
+                });
+        }
+
+        function addStoryToTable(doc) {
+            const storyData = doc.data();
+            const date = storyData.createdAt?.toDate 
+                    ? storyData.createdAt.toDate() 
+                    : new Date(storyData.createdAt);
+            
+            const row = document.createElement('tr');
+            row.id = `story-${doc.id}`;
+            row.innerHTML = `
+                <td>${date.toLocaleString('ar-EG')}</td>
+                <td>${storyData.title || 'بدون عنوان'}</td>
+                <td>${storyData.content?.substring(0, 50) || ''}${storyData.content?.length > 50 ? '...' : ''}</td>
+                <td>
+                    <button class="action-btn approve-btn" data-id="${doc.id}">
+                        <i class="fas fa-check"></i> قبول
+                    </button>
+                    <button class="action-btn reject-btn" data-id="${doc.id}">
+                        <i class="fas fa-times"></i> رفض
+                    </button>
+                </td>
+            `;
+            storiesList.appendChild(row);
+            
+            row.querySelector('.approve-btn').addEventListener('click', () => 
+                updateStoryStatus(doc.id, 'approved'));
+            
+            row.querySelector('.reject-btn').addEventListener('click', () => 
+                updateStoryStatus(doc.id, 'rejected'));
+        }
+
+        function removeStoryFromTable(storyId) {
+            const row = document.getElementById(`story-${storyId}`);
+            if (row) row.remove();
+        }
+
+        auth.onAuthStateChanged(user => {
+            if (user && user.email === ADMIN_EMAIL) {
+                loginPage.style.display = "none";
+                adminPanel.style.display = "block";
+                setupStoriesListener(); // تم التغيير هنا
+            } else {
+                loginPage.style.display = "block";
+                adminPanel.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

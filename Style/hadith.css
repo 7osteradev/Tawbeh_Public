@@ -1,0 +1,916 @@
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --secondary-color: #1565c0;
+            --secondary-light: #5e92f3;
+            --secondary-dark: #003c8f;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #fff;
+            --dark-red: #c62828;
+            --light-red: #ffebee;
+            --dark-blue: #1a237e;
+            --light-blue: #e8eaf6;
+            --dark-green: #2e7d32;
+            --light-green: #e8f5e9;
+            --gold: #ffc107;
+            --dark-gold: #ffa000;
+            --gray: #757575;
+            --light-gray: #f5f5f5;
+            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .NavBar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--primary-color);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .logo i {
+            margin-left: 10px;
+            font-size: 1.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .menu__link {
+            font-size: 1rem;
+            color: var(--white);
+            position: relative;
+            padding: 10px 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            height: 40px;
+            box-sizing: border-box;
+        }
+
+        .menu__link i {
+            margin-left: 8px;
+            font-size: 0.9rem;
+        }
+
+        .menu__link:hover, .menu__link:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .menu__link.active {
+            background-color: rgba(255, 255, 255, 0.25);
+            font-weight: bold;
+        }
+
+        /* القوائم المنسدلة */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            height: 40px;
+        }
+
+        .dropdown-btn {
+            position: relative;
+            padding-right: 30px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .dropdown.active .dropdown-icon {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: var(--primary-dark);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content .menu__link {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 0;
+            justify-content: flex-start;
+            background-color: transparent;
+            height: auto;
+        }
+
+        .dropdown-content .menu__link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger:focus {
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+        }
+
+        .main-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 70px;
+            padding-bottom: 30px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .header {
+            width: 100%;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            line-height: 1.3;
+        }
+
+        .header h1 i {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .verse {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid var(--gold);
+            margin-top: 20px;
+        }
+
+        .verse p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .verse i {
+            position: absolute;
+            right: -20px;
+            top: -12px;
+            color: var(--gold);
+            font-size: 1.3rem;
+            background-color: var(--primary-dark);
+            padding: 4px;
+            border-radius: 50%;
+        }
+
+        .ref {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: left;
+        }
+
+        .hadith-container {
+            width: min(95%, 1000px);
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #searchInput {
+            flex: 1;
+            min-width: 120px;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        #searchInput:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+        }
+
+        #searchBtn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.3s;
+            font-family: inherit;
+        }
+
+        #searchBtn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .books-container {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .books-container h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .book-card {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .book-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-card.active {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid var(--dark-gold);
+        }
+
+        .book-icon {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .book-card h4 {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .current-book-indicator {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-book-indicator i {
+            color: var(--gold);
+        }
+
+        .search-results {
+            display: none;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .hadith-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .hadith-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            box-shadow: var(--card-shadow);
+        }
+
+        .hadith-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .hadith-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            text-align: right;
+        }
+
+        .hadith-meta {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .hadith-grade {
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .grade-صحيح {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-right: 3px solid #2e7d32;
+        }
+
+        .grade-صحيح-متفق-عليه {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border-right: 3px solid #1565c0;
+        }
+
+        .grade-حسن-صحيح {
+            background-color: #fff8e1;
+            color: #ff8f00;
+            border-right: 3px solid #ff8f00;
+        }
+
+        .grade-حسن {
+            background-color: #fff3e0;
+            color: #ef6c00;
+            border-right: 3px solid #ef6c00;
+        }
+
+        .hadith-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .hadith-tag {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+        }
+
+        .hadith-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 5px;
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 4px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .favorite-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #c62828;
+        }
+
+        .favorite-btn .fas.fa-heart {
+            color: #c62828;
+        }
+
+        .share-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            transition: background-color 0.3s;
+            font-family: inherit;
+        }
+
+        .share-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .loader {
+            text-align: center;
+            padding: 25px;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        .loader i {
+            margin-left: 8px;
+            font-size: 1.1rem;
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .skeleton-text {
+            height: 12px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        .skeleton-header {
+            height: 20px;
+            width: 20px;
+            margin-left: auto;
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
+
+        .skeleton-footer {
+            height: 30px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .notification.success {
+            background-color: var(--primary-color);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .notification.error {
+            background-color: #c62828;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 30px 0 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-section {
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 6px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+            padding-right: 3px;
+        }
+
+        .footer-section ul li a::before {
+            content: "•";
+            color: #ffd54f;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 12px;
+            background-color: rgba(0, 0, 0, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 20px;
+            color: #757575;
+            font-size: 1rem;
+        }
+
+        /* تحسينات للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px 12px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .verse {
+                padding: 10px;
+            }
+            
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
+            }
+            
+            .book-card {
+                padding: 12px;
+                min-height: 90px;
+            }
+            
+            .book-icon {
+                font-size: 1.4rem;
+            }
+            
+            .book-card h4 {
+                font-size: 0.85rem;
+            }
+            
+            .hadith-item {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-container {
+                flex-direction: column;
+            }
+            
+            #searchInput, #searchBtn {
+                width: 100%;
+            }
+            
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ميزات جديدة */
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--light-bg);
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .favorites-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .favorites-section.active {
+            display: block;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        /* تحسينات الترقيم */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            background-color: var(--light-bg);
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination-btn:hover:not(.active):not(:disabled) {
+            background-color: #e9ecef;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .pagination-dots {
+            padding: 8px 5px;
+            color: var(--gray);
+        }
+
+        .pagination-jump {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 10px;
+        }
+
+        .pagination-jump input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .pagination-jump button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .strength-meter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .strength-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .strength-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .strength-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        .strength-label {
+            font-size: 0.85rem;
+            color: #666;
+        }

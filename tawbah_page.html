@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="موقع توبتي - طريقك للتوبة النصوح، باب الله مفتوح لكل من أراد العودة إليه">
+    <meta name="theme-color" content="#2e7d32">
+    <title>توبتي - طريقك للتوبة النصوح</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .NavBar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #2e7d32;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            margin-top: 80px;
+        }
+        
+        [data-lazy] {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        [data-lazy].loaded {
+            opacity: 1;
+        }
+
+        /* أنماط جديدة للميزات المضافة */
+        .progress-section {
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .progress-item {
+            flex: 1;
+            padding: 15px;
+        }
+        
+        .progress-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .progress-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        
+        .dua-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-right: 5px solid #2e7d32;
+        }
+        
+        .dua-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .dua-icon {
+            background-color: #e8f5e9;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            color: #2e7d32;
+        }
+        
+        .dua-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        
+        .dua-reference {
+            font-style: italic;
+            color: #666;
+            text-align: left;
+        }
+        
+        .sin-severity {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .severity-label {
+            margin-left: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .severity-indicator {
+            display: flex;
+        }
+        
+        .severity-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 3px;
+            background-color: #e0e0e0;
+        }
+        
+        .severity-dot.active {
+            background-color: #f44336;
+        }
+        
+        .reminder-section {
+            background-color: #fff8e1;
+            border: 1px solid #ffd54f;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reminder-icon {
+            color: #ff9800;
+            font-size: 1.5rem;
+            margin-left: 15px;
+        }
+        
+        .reminder-text {
+            flex: 1;
+        }
+        
+        .reminder-btn {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .share-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .share-btn {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            margin: 0 5px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .share-btn i {
+            margin-left: 8px;
+        }
+        
+        .achievement-badge {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* تحسينات للاستجابة */
+        @media (max-width: 768px) {
+            .progress-container {
+                flex-direction: column;
+            }
+            
+            .progress-item {
+                margin-bottom: 15px;
+            }
+            
+            .reminder-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .reminder-icon {
+                margin: 0 0 10px 0;
+            }
+        }
+    </style>
+    
+    <link rel="stylesheet" href="Style/tawbah.css" media="print" onload="this.media='all'">
+    
+    <script src="Script/tawbah.js" defer></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNXQ2hrBcpXY3BD8JuOqEkO68dnyV1LX4",
+            authDomain: "tawbeh-9cee5.firebaseapp.com",
+            projectId: "tawbeh-9cee5",
+            storageBucket: "tawbeh-9cee5.appspot.com",
+            messagingSenderId: "1093236468990",
+            appId: "1:1093236468990:web:50bd1345164d5d0f7f49af"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // بيانات المستخدم المحلية
+        let userData = {
+            points: 0,
+            currentStreak: 0,
+            longestStreak: 0,
+            totalDays: 0,
+            lastPledgeDate: null,
+            achievements: []
+        };
+
+        // تحميل بيانات المستخدم من التخزين المحلي
+        function loadUserData() {
+            const savedData = localStorage.getItem('tawbahUserData');
+            if (savedData) {
+                userData = JSON.parse(savedData);
+            }
+            updateProgressUI();
+        }
+
+        // حفظ بيانات المستخدم في التخزين المحلي
+        function saveUserData() {
+            localStorage.setItem('tawbahUserData', JSON.stringify(userData));
+            updateProgressUI();
+        }
+
+        // تحديث واجهة تقدم المستخدم
+        function updateProgressUI() {
+            // تحديث نقاط التوبة
+            document.getElementById('tawbah-points').textContent = userData.points;
+            
+            // تحديث الأيام المتتالية
+            document.getElementById('current-streak').textContent = userData.currentStreak;
+            document.getElementById('longest-streak').textContent = userData.longestStreak;
+            document.getElementById('total-days').textContent = userData.totalDays;
+            
+            // تحديث شريط التقدم
+            const progressFill = document.getElementById('progress-fill');
+            const nextLevelPoints = Math.ceil(userData.points / 100) * 100;
+            const progressPercentage = (userData.points % 100) || (userData.points > 0 ? 100 : 0);
+            progressFill.style.width = `${progressPercentage}%`;
+            
+            // تحديث الشارات
+            updateAchievements();
+        }
+
+        // إضافة نقاط للمستخدم
+        function addPoints(points) {
+            userData.points += points;
+            
+            // التحقق من الأيام المتتالية
+            const today = new Date().toDateString();
+            if (userData.lastPledgeDate !== today) {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                
+                if (userData.lastPledgeDate === yesterday.toDateString()) {
+                    userData.currentStreak++;
+                } else if (userData.lastPledgeDate !== today) {
+                    userData.currentStreak = 1;
+                }
+                
+                userData.lastPledgeDate = today;
+                userData.totalDays++;
+                
+                if (userData.currentStreak > userData.longestStreak) {
+                    userData.longestStreak = userData.currentStreak;
+                }
+            }
+            
+            saveUserData();
+            checkForNewAchievements();
+        }
+
+        // التحقق من الإنجازات الجديدة
+        function checkForNewAchievements() {
+            const achievements = [
+                { id: 'first_step', name: 'خطوة أولى', condition: () => userData.totalDays >= 1, points: 10 },
+                { id: 'week_streak', name: 'أسبوع توبة', condition: () => userData.currentStreak >= 7, points: 50 },
+                { id: 'month_streak', name: 'شهر توبة', condition: () => userData.currentStreak >= 30, points: 100 },
+                { id: 'hundred_points', name: '100 نقطة توبة', condition: () => userData.points >= 100, points: 0 },
+                { id: 'five_hundred_points', name: '500 نقطة توبة', condition: () => userData.points >= 500, points: 0 }
+            ];
+            
+            achievements.forEach(achievement => {
+                if (achievement.condition() && !userData.achievements.includes(achievement.id)) {
+                    userData.achievements.push(achievement.id);
+                    if (achievement.points > 0) {
+                        addPoints(achievement.points);
+                    }
+                    showAchievementNotification(achievement.name);
+                }
+            });
+            
+            saveUserData();
+        }
+
+        // عرض إشعار الإنجاز
+        function showAchievementNotification(achievementName) {
+            const notification = document.createElement('div');
+            notification.className = 'achievement-notification';
+            notification.innerHTML = `
+                <div style="position: fixed; top: 100px; right: 20px; background: #4caf50; color: white; padding: 15px; border-radius: 5px; z-index: 10000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                    <i class="fas fa-trophy" style="margin-left: 10px;"></i>
+                    <strong>مبارك! لقد حصلت على إنجاز جديد:</strong> ${achievementName}
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // تحديث عرض الشارات
+        function updateAchievements() {
+            const badgesContainer = document.getElementById('achievement-badges');
+            if (!badgesContainer) return;
+            
+            badgesContainer.innerHTML = '';
+            
+            const achievementsMap = {
+                'first_step': 'خطوة أولى',
+                'week_streak': 'أسبوع توبة',
+                'month_streak': 'شهر توبة',
+                'hundred_points': '100 نقطة',
+                'five_hundred_points': '500 نقطة'
+            };
+            
+            userData.achievements.forEach(achievementId => {
+                if (achievementsMap[achievementId]) {
+                    const badge = document.createElement('span');
+                    badge.className = 'achievement-badge';
+                    badge.textContent = achievementsMap[achievementId];
+                    badgesContainer.appendChild(badge);
+                }
+            });
+        }
+
+        // إعداد التذكيرات
+        function setupReminders() {
+            const reminderBtn = document.getElementById('reminder-btn');
+            if (!reminderBtn) return;
+            
+            reminderBtn.addEventListener('click', function() {
+                if ('Notification' in window) {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            // هنا يمكنك إعداد إشعارات فعلية
+                            alert('تم تفعيل التذكيرات اليومية! سنذكرك بالتوبة يومياً إن شاء الله.');
+                        } else {
+                            alert('لم يتم تفعيل التذكيرات. يرجى السماح بالإشعارات في متصفحك.');
+                        }
+                    });
+                } else {
+                    alert('المتصفح لا يدعم الإشعارات. حاول استخدام متصفح حديث.');
+                }
+            });
+        }
+
+        // إعداد مشاركة التقدم
+        function setupSharing() {
+            const shareButtons = document.querySelectorAll('.share-btn');
+            
+            shareButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const platform = this.getAttribute('data-platform');
+                    let shareUrl = '';
+                    const text = `لقد تابت إلى الله وحصلت على ${userData.points} نقطة توبة! انضم إلى رحلتي في موقع توبة.`;
+                    
+                    if (platform === 'whatsapp') {
+                        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+                    }
+                    
+                    if (shareUrl) {
+                        window.open(shareUrl, '_blank');
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل بيانات المستخدم
+            loadUserData();
+            
+            // إعداد التذكيرات
+            setupReminders();
+            
+            // إعداد المشاركة
+            setupSharing();
+            
+            const storyForm = document.getElementById('story-form');
+            let isSubmitting = false;
+            
+            storyForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (isSubmitting) return;
+                isSubmitting = true;
+                
+                const title = document.getElementById('story-title').value;
+                const content = document.getElementById('story-content').value;
+                const ip = await fetch('https://api.ipify.org?format=json')
+                            .then(res => res.json())
+                            .then(data => data.ip)
+                            .catch(() => 'unknown');
+
+                try {
+                    await db.collection("stories").add({
+                        title: title,
+                        content: content,
+                        status: "pending",
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        ip: ip
+                    });
+                    
+                    alert("تم إرسال القصة بنجاح! سيتم مراجعتها من قبل الإدارة.");
+                    storyForm.reset();
+                    
+                    // منح نقاط لمشاركة القصة
+                    addPoints(20);
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("خطأ في الإرسال: " + error.message);
+                } finally {
+                    isSubmitting = false;
+                }
+            });
+            
+            // تحديث زر التعهد لمنح النقاط
+            const pledgeBtn = document.getElementById('pledge-btn');
+            const modalPledgeBtn = document.getElementById('modal-pledge-btn');
+            
+            if (pledgeBtn) {
+                pledgeBtn.addEventListener('click', function() {
+                    addPoints(10);
+                    alert('تم التعهد بنجاح! حصلت على 10 نقاط توبة.');
+                });
+            }
+            
+            if (modalPledgeBtn) {
+                modalPledgeBtn.addEventListener('click', function() {
+                    addPoints(10);
+                    alert('تم التعهد بنجاح! حصلت على 10 نقاط توبة.');
+                    document.getElementById('sin-modal').style.display = 'none';
+                });
+            }
+        });
+
+        async function loadSuccessStories() {
+            try {
+                const storiesGrid = document.getElementById('stories-grid');
+                storiesGrid.innerHTML = '<div class="loading">جاري التحميل...</div>';
+                
+                const querySnapshot = await db.collection("stories")
+                    .where("status", "==", "approved")
+                    .orderBy("reviewedAt", "desc")
+                    .limit(5)
+                    .get();
+
+                storiesGrid.innerHTML = '';
+                
+                if (querySnapshot.empty) {
+                    storiesGrid.innerHTML = '<div class="empty">لا توجد قصص معتمدة بعد.</div>';
+                    return;
+                }
+
+                querySnapshot.forEach(doc => {
+                    const story = doc.data();
+                    const reviewDate = story.reviewedAt?.toDate 
+                        ? story.reviewedAt.toDate().toLocaleString('ar-EG')
+                        : 'تاريخ غير معروف';
+                    
+                    storiesGrid.innerHTML += `
+                        <div class="story-card">
+                            <h3 class="story-title">${story.title || 'بدون عنوان'}</h3>
+                            <p class="story-content">${story.content}</p>
+                            <div class="story-meta">نشرت في: ${reviewDate}</div>
+                        </div>
+                    `;
+                });
+
+            } catch (error) {
+                console.error("Error loading stories:", error);
+                storiesGrid.innerHTML = '<div class="error">حدث خطأ في تحميل القصص.</div>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadSuccessStories);
+    </script>
+</head>
+<body>
+    <nav class="NavBar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>توبــــة</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a class="menu__link" href="index.html"><i class="fas fa-home" aria-hidden="true"></i> <span>الرئيسية</span></a>
+                <a class="menu__link" href="salah_page.html"><i class="fas fa-clock" aria-hidden="true"></i> <span>مواقيت الصلاة</span></a>
+                <a class="menu__link" href="adhkar_page.html"><i class="fas fa-dharmachakra" aria-hidden="true"></i> <span>أذكار</span></a>
+                <a class="menu__link" href="quran_page.html"><i class="fas fa-quran" aria-hidden="true"></i> <span>القرآن الكريم</span></a>
+                <a class="menu__link" href="hadith_page.html"><i class="fas fa-book-open" aria-hidden="true"></i> <span>الحديث الشريف</span></a>
+                <a class="menu__link" href="tawbah_page.html"><i class="fas fa-hands-praying"></i> توبتي</a>
+
+                <div class="dropdown">
+                    <a class="menu__link dropdown-btn active" href="#">
+                        <i class="fas fa-ellipsis-h" aria-hidden="true"></i> <span>المزيد</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a class="menu__link" href="asma_allah.html"><i class="fas fa-book-open"></i> أسماء الله الحسنى</a>
+                        <a class="menu__link" href="stories_page.html"><i class="fas fa-book"></i> قصص إسلامية</a>
+                        <a class="menu__link" href="islamic_figures.html"><i class="fas fa-users"></i> شخصيات إسلامية</a>
+                        <a class="menu__link" href="tasbih.html"><i class="fas fa-praying-hands"></i> مسبحة إلكترونية</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="قائمة" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-hands-praying" aria-hidden="true"></i> توبتي</h1>
+                <p class="subtitle">طريقك للتوبة النصوح، باب الله مفتوح لكل من أراد العودة إليه</p>
+                <div class="verse">
+                    <p><i class="fas fa-quote-right" aria-hidden="true"></i> {قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا ۚ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ}</p>
+                    <p class="ref">[الزمر:53]</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم تقدم المستخدم الجديد -->
+        <div class="progress-section" data-lazy>
+            <h2><i class="fas fa-chart-line" aria-hidden="true"></i> تقدمي في رحلة التوبة</h2>
+            <div class="progress-container">
+                <div class="progress-item">
+                    <div class="progress-value" id="tawbah-points">0</div>
+                    <div class="progress-label">نقاط التوبة</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-label">القادم: 100 نقطة</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-value" id="current-streak">0</div>
+                    <div class="progress-label">أيام متتالية</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-value" id="longest-streak">0</div>
+                    <div class="progress-label">أطول مدة توبة</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-value" id="total-days">0</div>
+                    <div class="progress-label">إجمالي أيام التوبة</div>
+                </div>
+            </div>
+            <div id="achievement-badges" style="margin-top: 15px;">
+                <!-- سيتم إضافة الشارات هنا ديناميكيًا -->
+            </div>
+        </div>
+        
+        <!-- قسم التذكيرات الجديد -->
+        <div class="reminder-section" data-lazy>
+            <div class="reminder-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="reminder-text">
+                <strong>تذكير يومي بالتوبة</strong>
+                <p>اضغط على الزر أدناه لتفعيل التذكيرات اليومية التي ستساعدك على المداومة على التوبة</p>
+            </div>
+            <button class="reminder-btn" id="reminder-btn">تفعيل التذكيرات</button>
+        </div>
+        
+        <div class="sections-container">
+            <div class="section" id="common-sins" data-lazy>
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> الذنوب الشائعة بين المسلمين</h2>
+                    <p class="section-subtitle">اختر ذنبًا لتعرف كيف تتوب منه بخطوات عملية</p>
+                    <div class="sin-categories">
+                        <button class="category-btn active" data-category="all">الكل</button>
+                        <button class="category-btn" data-category="major">كبائر</button>
+                        <button class="category-btn" data-category="minor">صغائر</button>
+                        <button class="category-btn" data-category="heart">ذنوب القلوب</button>
+                    </div>
+                </div>
+                <div class="sins-grid" id="sins-grid">
+                    <!-- سيتم تحميل الذنوب ديناميكيًا -->
+                </div>
+            </div>
+            
+            <!-- قسم أدعية التوبة الجديد -->
+            <div class="section" id="dua-section" data-lazy>
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-hands-praying" aria-hidden="true"></i> أدعية التوبة</h2>
+                    <p class="section-subtitle">أدعية مأثورة تساعدك في التوبة والاستغفار</p>
+                </div>
+                <div class="dua-section">
+                    <div class="dua-header">
+                        <div class="dua-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3>دعاء التوبة</h3>
+                    </div>
+                    <p class="dua-text">اللهم إنك عفو كريم تحب العفو فاعف عني، اللهم إني ظلمت نفسي ظلماً كثيراً ولا يغفر الذنوب إلا أنت، فاغفر لي مغفرة من عندك وارحمني، إنك أنت الغفور الرحيم.</p>
+                    <p class="dua-reference">مستحب في جميع أوقات التوبة</p>
+                </div>
+                <div class="dua-section">
+                    <div class="dua-header">
+                        <div class="dua-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3>دعاء الاستغفار</h3>
+                    </div>
+                    <p class="dua-text">أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه، أستغفر الله وأتوب إليه، أستغفر الله الذي لا إله إلا هو الحي القيوم وأتوب إليه.</p>
+                    <p class="dua-reference">يقال بعد كل صلاة وفي أوقات الاستغفار</p>
+                </div>
+            </div>
+            
+            <div class="section" id="pledge-section" data-lazy>
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-handshake" aria-hidden="true"></i> تعهد يومي</h2>
+                    <p class="section-subtitle">أتعهد اليوم بعدم العودة لهذا الذنب</p>
+                </div>
+                <div class="pledge-container" id="pledge-container">
+                    <div class="pledge-card">
+                        <div class="pledge-icon">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p class="pledge-text">اختر ذنبًا من القائمة أعلاه لتتعهد بعدم العودة إليه اليوم</p>
+                        <button class="pledge-btn" id="pledge-btn">تعهد الآن</button>
+                    </div>
+                    <div class="pledge-stats" id="pledge-stats">
+                    </div>
+                    <div class="calendar-container" id="calendar-container">
+                        <div class="calendar-header">
+                            <button id="prev-month" class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                            <h3 class="calendar-title" id="calendar-title">أيام التوبة المتتالية</h3>
+                            <button id="next-month" class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                        </div>
+                        <div class="calendar" id="calendar">
+                        </div>
+                        <div class="calendar-stats">
+                            <div class="stat-item">
+                                <span class="stat-value" id="current-month-days">0</span>
+                                <span class="stat-label">يوم توبة هذا الشهر</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="current-streak">0</span>
+                                <span class="stat-label">يوم متتالي</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="total-days">0</span>
+                                <span class="stat-label">يوم توبة منذ البداية</span>
+                            </div>
+                        </div>
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <span class="legend-color day-completed"></span>
+                                <span>يوم توبة</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color day-current"></span>
+                                <span>يوم التعهد</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color day-missed"></span>
+                                <span>يوم فائت</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section" id="success-stories" data-lazy>
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-book-heart" aria-hidden="true"></i> قصص توبة ملهمة</h2>
+                    <p class="section-subtitle">قصص حقيقية لأناس تابوا فغفر الله لهم</p>
+                </div>
+                <div class="stories-grid" id="stories-grid">
+                </div>
+                <div class="story-form-container">
+                    <h3 class="form-title">شاركنا قصتك</h3>
+                    <p class="form-subtitle">ساعد الآخرين بتجربتك في التوبة (سيتم مراجعة القصة قبل النشر)</p>
+                    <form id="story-form" class="story-form">
+                        <div class="form-group">
+                            <label for="story-title">عنوان القصة</label>
+                            <input type="text" id="story-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="story-content">تفاصيل القصة</label>
+                            <textarea id="story-content" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit-btn">إرسال القصة</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- قسم مشاركة التقدم الجديد -->
+            <div class="share-section" data-lazy>
+                <h3><i class="fas fa-share-alt" aria-hidden="true"></i> شارك تقدمك وشجع الآخرين</h3>
+                <button class="share-btn" data-platform="whatsapp">
+                    <i class="fab fa-whatsapp"></i> واتساب
+                </button>
+            </div>
+            
+            <div class="section" id="doubts-section" data-lazy>
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-question-circle" aria-hidden="true"></i> أسئلة شائعة عن التوبة</h2>
+                    <p class="section-subtitle">إجابات على تساؤلاتك حول التوبة والرجوع إلى الله</p>
+                </div>
+                <div class="doubts-container" id="doubts-container">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="sin-modal">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="close-modal" id="close-modal" aria-label="إغلاق">&times;</button>
+            <h2 class="modal-title" id="modal-title"><i class="fas fa-exclamation-circle" aria-hidden="true"></i> اسم الذنب</h2>
+            <div class="modal-content" id="modal-content">
+            </div>
+            <div class="modal-footer">
+                <button class="modal-pledge-btn" id="modal-pledge-btn">أتعهد اليوم بعدم العودة لهذا الذنب</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-info-circle" aria-hidden="true"></i> عن الموقع</h3>
+                <p>موقع توبتي يهدف إلى مساعدة المسلمين في التوبة النصوح والعودة إلى الله تعالى</p>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-link" aria-hidden="true"></i> روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="tawbah.html">التوبة النصوح</a></li>
+                    <li><a href="quran_page.html">القرآن الكريم</a></li>
+                    <li><a href="adhkar_page.html">الأذكار اليومية</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-envelope" aria-hidden="true"></i> تواصل معنا</h3>
+                <p>للاستفسارات أو المقترحات، يرجى التواصل عبر البريد الإلكتروني:</p>
+                <p>info@tawbaty.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2025</span> توبتي - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+    
+    <button class="scroll-top" id="scrollTop" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        if ('IntersectionObserver' in window) {
+            const lazyLoader = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {rootMargin: '100px'});
+            
+            document.querySelectorAll('[data-lazy]').forEach(el => {
+                lazyLoader.observe(el);
+            });
+        } else {
+            document.querySelectorAll('[data-lazy]').forEach(el => {
+                el.classList.add('loaded');
+            });
+        }
+
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = this.closest('.dropdown');
+                dropdown.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

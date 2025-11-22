@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="المسبحة الإلكترونية - تطبيق توبة">
+    <meta name="theme-color" content="#1f7d53">
+    <title>المسبحة الإلكترونية - تطبيق توبة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Style/tasbih.css">
+    <script src="Script/tasbih.js"></script>
+</head>
+<body>
+    <nav class="NavBar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>توبــــة</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a class="menu__link" href="index.html"><i class="fas fa-home" aria-hidden="true"></i> <span>الرئيسية</span></a>
+                <a class="menu__link" href="salah_page.html"><i class="fas fa-clock" aria-hidden="true"></i> <span>مواقيت الصلاة</span></a>
+                <a class="menu__link" href="adhkar_page.html"><i class="fas fa-dharmachakra" aria-hidden="true"></i> <span>أذكار</span></a>
+                <a class="menu__link" href="quran_page.html"><i class="fas fa-quran" aria-hidden="true"></i> <span>القرآن الكريم</span></a>
+                <a class="menu__link" href="hadith_page.html"><i class="fas fa-book-open" aria-hidden="true"></i> <span>الحديث الشريف</span></a>
+                <a class="menu__link" href="tawbah_page.html"><i class="fas fa-hands-praying"></i> توبتي</a>
+
+                <div class="dropdown">
+                    <a class="menu__link dropdown-btn active" href="#">
+                        <i class="fas fa-ellipsis-h" aria-hidden="true"></i> <span>المزيد</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a class="menu__link" href="asma_allah.html"><i class="fas fa-book-open"></i> أسماء الله الحسنى</a>
+                        <a class="menu__link" href="stories_page.html"><i class="fas fa-book"></i> قصص إسلامية</a>
+                        <a class="menu__link" href="islamic_figures.html"><i class="fas fa-users"></i> شخصيات إسلامية</a>
+                        <a class="menu__link active" href="tasbih.html"><i class="fas fa-praying-hands"></i> مسبحة إلكترونية</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="قائمة" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-praying-hands"></i> المسبحة الإلكترونية</h1>
+                <p class="subtitle">سبح الله واحفظ أذكارك بسهولة</p>
+                <div class="verse">
+                    <p><i class="fas fa-quote-right"></i> {فَسُبْحَانَ اللَّهِ حِينَ تُمْسُونَ وَحِينَ تُصْبِحُونَ}</p>
+                    <p class="ref">[الروم: 17]</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tasbih-container">
+            <div class="counter-display" aria-live="polite">
+                <span id="counter">0</span>
+            </div>
+            
+            <div class="controls">
+                <button id="decrement-btn" title="حذف رقم واحد من العداد">
+                    <i class="fas fa-minus"></i> حذف
+                </button>
+                <button id="reset-btn" title="إعادة العداد إلى الصفر">
+                    <i class="fas fa-redo"></i> إعادة الضبط
+                </button>
+            </div>
+        </div>
+
+        <div class="dhikr-suggestions">
+            <h3><i class="fas fa-lightbulb"></i> اقتراحات أذكار للتسبيح</h3>
+            
+            <div class="slider-container">
+                <button class="slider-arrow left-arrow" id="prevBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="dhikr-slider" id="dhikrSlider">
+                    <div class="slider-group active">
+                        <div class="dhikr-card" data-count="33">
+                            <h4>سبحان الله (33 مرة)</h4>
+                            <p>قال رسول الله ﷺ: "من سبح الله في دبر كل صلاة ثلاثاً وثلاثين... غفرت خطاياه وإن كانت مثل زبد البحر"</p>
+                            <p class="ref">[رواه مسلم]</p>
+                        </div>
+                        <div class="dhikr-card" data-count="33">
+                            <h4>الحمد لله (33 مرة)</h4>
+                            <p>قال رسول الله ﷺ: "كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم"</p>
+                            <p class="ref">[متفق عليه]</p>
+                        </div>
+                        <div class="dhikr-card" data-count="33">
+                            <h4>الله أكبر (33 مرة)</h4>
+                            <p>قال رسول الله ﷺ: "أحب الكلام إلى الله أربع: سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر"</p>
+                            <p class="ref">[رواه مسلم]</p>
+                        </div>
+                    </div>
+                    
+                    <div class="slider-group">
+                        <div class="dhikr-card" data-count="100">
+                            <h4>لا إله إلا الله (100 مرة)</h4>
+                            <p>قال رسول الله ﷺ: "من قال لا إله إلا الله وحده لا شريك له... كانت له عدل عشر رقاب"</p>
+                            <p class="ref">[متفق عليه]</p>
+                        </div>
+                        <div class="dhikr-card" data-count="100">
+                            <h4>أستغفر الله (100 مرة)</h4>
+                            <p>قال رسول الله ﷺ: "من لزم الاستغفار جعل الله له من كل ضيق مخرجا ومن كل هم فرجا"</p>
+                            <p class="ref">[رواه أبو داود]</p>
+                        </div>
+                        <div class="dhikr-card" data-count="100">
+                            <h4>سبحان الله وبحمده (100 مرة)</h4>
+                            <p>قال رسول الله ﷺ: "من قال سبحان الله وبحمده في يوم مائة مرة، حطت خطاياه وإن كانت مثل زبد البحر"</p>
+                            <p class="ref">[متفق عليه]</p>
+                        </div>
+                    </div>
+                    
+                    <div class="slider-group">
+                        <div class="dhikr-card" data-count="3">
+                            <h4>سورة الإخلاص (3 مرات)</h4>
+                            <p>قال رسول الله ﷺ: "قل هو الله أحد تعدل ثلث القرآن"</p>
+                            <p class="ref">[متفق عليه]</p>
+                        </div>
+                        <div class="dhikr-card" data-count="10">
+                            <h4>لا حول ولا قوة إلا بالله (10 مرات)</h4>
+                            <p>قال رسول الله ﷺ: "ألا أدلك على كنز من كنوز الجنة؟ لا حول ولا قوة إلا بالله"</p>
+                            <p class="ref">[متفق عليه]</p>
+                        </div>
+                        <div class="dhikr-card" data-count="7">
+                            <h4>أذكار الصباح والمساء (7 مرات)</h4>
+                            <p>قال رسول الله ﷺ: "من قال حين يصبح وحين يمسي: حسبي الله لا إله إلا هو عليه توكلت وهو رب العرش العظيم، سبع مرات كفاه الله ما أهمه"</p>
+                            <p class="ref">[رواه أبو داود]</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="slider-arrow right-arrow" id="nextBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <div class="slider-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="العودة إلى الأعلى" title="العودة إلى الأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="notification" id="notification"></div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-info-circle" aria-hidden="true"></i> عن التطبيق</h3>
+                <p>تطبيق توبة يهدف إلى مساعدة المسلمين في التوبة النصوح والالتزام بالعبادات اليومية</p>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-link" aria-hidden="true"></i> روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="salah_page.html">مواقيت الصلاة</a></li>
+                    <li><a href="adhkar_page.html">الأذكار اليومية</a></li>
+                    <li><a href="quran_page.html">القرآن الكريم</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-envelope" aria-hidden="true"></i> تواصل معنا</h3>
+                <p>للاستفسارات أو المقترحات، يرجى التواصل عبر البريد الإلكتروني:</p>
+                <p>info@tawbaty.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2025</span> توبتي - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+</body>
+</html>

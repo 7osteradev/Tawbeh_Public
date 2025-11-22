@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="شخصيات إسلامية - طريق التوبة">
+    <meta name="theme-color" content="#1f7d53">
+    <title>شخصيات إسلامية - طريق التوبة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .NavBar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #1f7d53;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            margin-top: 80px;
+            padding-bottom: 30px;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="Style/islamic_figures.css" media="print" onload="this.media='all'">
+    
+    <script src="Script/islamic_figures.js" defer></script>
+</head>
+<body>
+    <nav class="NavBar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>توبــــة</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a class="menu__link" href="index.html"><i class="fas fa-home" aria-hidden="true"></i> <span>الرئيسية</span></a>
+                <a class="menu__link" href="salah_page.html"><i class="fas fa-clock" aria-hidden="true"></i> <span>مواقيت الصلاة</span></a>
+                <a class="menu__link" href="adhkar_page.html"><i class="fas fa-dharmachakra" aria-hidden="true"></i> <span>أذكار</span></a>
+                <a class="menu__link" href="quran_page.html"><i class="fas fa-quran" aria-hidden="true"></i> <span>القرآن الكريم</span></a>
+                <a class="menu__link" href="hadith_page.html"><i class="fas fa-book-open" aria-hidden="true"></i> <span>الحديث الشريف</span></a>
+                <a class="menu__link" href="tawbah_page.html"><i class="fas fa-hands-praying"></i> توبتي</a>
+
+                <div class="dropdown">
+                    <a class="menu__link dropdown-btn active" href="#">
+                        <i class="fas fa-ellipsis-h" aria-hidden="true"></i> <span>المزيد</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a class="menu__link" href="asma_allah.html"><i class="fas fa-book-open"></i> أسماء الله الحسنى</a>
+                        <a class="menu__link" href="stories_page.html"><i class="fas fa-book"></i> قصص إسلامية</a>
+                        <a class="menu__link" href="islamic_figures.html"><i class="fas fa-users"></i> شخصيات إسلامية</a>
+                        <a class="menu__link" href="tasbih.html"><i class="fas fa-praying-hands"></i> مسبحة إلكترونية</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="قائمة" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-users"></i> شخصيات إسلامية</h1>
+                <p class="subtitle">استكشف سير العظماء واستفد من الدروس والعبر</p>
+                <div class="verse">
+                    <p><i class="fas fa-quote-right"></i> {لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِأُولِي الْأَلْبَابِ}</p>
+                    <p class="ref">[يوسف: 111]</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stories-container">
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="prophets">أنبياء</button>
+                    <button class="tab-btn" data-tab="companions">صحابة</button>
+                    <button class="tab-btn" data-tab="followers">تابعين</button>
+                </div>
+                
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="ابحث بالدلالة (مثال: الصبر، الإخلاص، التوبة...)" aria-label="بحث عن شخصيات">
+                    <button id="search-btn" aria-label="بحث"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="stories-grid" id="stories-grid">
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-top" id="scrollTop" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('show');
+            } else {
+                scrollTop.classList.remove('show');
+            }
+        });
+        
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                const isExpanded = navLinks.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+            });
+        });
+
+
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = this.closest('.dropdown');
+                dropdown.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

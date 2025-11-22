@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="أذكار المسلم - تطبيق توبة">
+    <meta name="theme-color" content="#2e7d32">
+    <title>الأذكار - توبتي</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .NavBar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #2e7d32;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            margin-top: 80px;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="Style/adhkar.css" media="print" onload="this.media='all'">
+    
+    <script src="Script/adhkar.js" defer></script>
+</head>
+<body>
+    <nav class="NavBar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>توبــــة</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a class="menu__link" href="index.html"><i class="fas fa-home" aria-hidden="true"></i> <span>الرئيسية</span></a>
+                <a class="menu__link" href="salah_page.html"><i class="fas fa-clock" aria-hidden="true"></i> <span>مواقيت الصلاة</span></a>
+                <a class="menu__link" href="adhkar_page.html"><i class="fas fa-dharmachakra" aria-hidden="true"></i> <span>أذكار</span></a>
+                <a class="menu__link" href="quran_page.html"><i class="fas fa-quran" aria-hidden="true"></i> <span>القرآن الكريم</span></a>
+                <a class="menu__link" href="hadith_page.html"><i class="fas fa-book-open" aria-hidden="true"></i> <span>الحديث الشريف</span></a>
+                <a class="menu__link" href="tawbah_page.html"><i class="fas fa-hands-praying"></i> توبتي</a>
+
+                <div class="dropdown">
+                    <a class="menu__link dropdown-btn active" href="#">
+                        <i class="fas fa-ellipsis-h" aria-hidden="true"></i> <span>المزيد</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a class="menu__link" href="asma_allah.html"><i class="fas fa-book-open"></i> أسماء الله الحسنى</a>
+                        <a class="menu__link" href="stories_page.html"><i class="fas fa-book"></i> قصص إسلامية</a>
+                        <a class="menu__link" href="islamic_figures.html"><i class="fas fa-users"></i> شخصيات إسلامية</a>
+                        <a class="menu__link" href="tasbih.html"><i class="fas fa-praying-hands"></i> مسبحة إلكترونية</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="قائمة" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-dharmachakra" aria-hidden="true"></i> الأذكار</h1>
+                <p class="subtitle">أذكار الصباح والمساء والنوم والاستيقاظ وما بين ذلك</p>
+                <div class="verse">
+                    <p><i class="fas fa-quote-right" aria-hidden="true"></i> {فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ}</p>
+                    <p class="ref">[البقرة:152]</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sections-container">
+            <div class="section" id="adhkar-types">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-list" aria-hidden="true"></i> أنواع الأذكار</h2>
+                    <p class="section-subtitle">اختر نوع الأذكار الذي تريد قراءته</p>
+                </div>
+                <div class="adhkar-buttons">
+                    <button class="adhkar-btn" id="morningBtn">
+                        <i class="fas fa-sun" aria-hidden="true"></i> أذكار الصباح
+                    </button>
+                    <button class="adhkar-btn" id="eveningBtn">
+                        <i class="fas fa-moon" aria-hidden="true"></i> أذكار المساء
+                    </button>
+                    <button class="adhkar-btn" id="sleepBtn">
+                        <i class="fas fa-bed" aria-hidden="true"></i> أذكار النوم
+                    </button>
+                    <button class="adhkar-btn" id="wakeupBtn">
+                        <i class="fas fa-bell" aria-hidden="true"></i> أذكار الاستيقاظ
+                    </button>
+                    <button class="adhkar-btn" id="prayerBtn">
+                        <i class="fas fa-mosque" aria-hidden="true"></i> أذكار بعد الصلاة
+                    </button>
+                    <button class="adhkar-btn" id="dailyBtn">
+                        <i class="fas fa-clock" aria-hidden="true"></i> أذكار يومية
+                    </button>
+                </div>
+            </div>
+            
+            <div class="section" id="adhkar-content-section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-book-open" aria-hidden="true"></i> الأذكار المختارة</h2>
+                    <p class="section-subtitle">اقرأ أذكارك بتدبر وتركيز</p>
+                </div>
+                <div class="adhkar-content" id="adhkarContent">
+                    <div class="welcome-message">
+                        <i class="fas fa-hand-point-left" aria-hidden="true"></i>
+                        <p>اختر نوع الأذكار من القائمة أعلاه لعرضها هنا</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-info-circle" aria-hidden="true"></i> عن التطبيق</h3>
+                <p>تطبيق توبة يهدف إلى مساعدة المسلمين في المحافظة على الأذكار اليومية</p>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-link" aria-hidden="true"></i> روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="adhkar_page.html">الأذكار اليومية</a></li>
+                    <li><a href="salah_page.html">مواقيت الصلاة</a></li>
+                    <li><a href="quran_page.html">القرآن الكريم</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-envelope" aria-hidden="true"></i> تواصل معنا</h3>
+                <p>للاستفسارات أو المقترحات، يرجى التواصل عبر البريد الإلكتروني:</p>
+                <p>info@tawbaty.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2025</span> توبتي - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+    
+    <button class="scroll-top" id="scrollTop" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = this.closest('.dropdown');
+                dropdown.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

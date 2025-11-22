@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="القرآن الكريم مع التفسير والتلاوة - تطبيق توبة">
+    <meta name="theme-color" content="#2e7d32">
+    <title>القرآن الكريم مع التفسير والتلاوة | توبة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Style/quran.css">
+    <script src="Script/quran.js" defer></script>
+</head>
+<body>
+    <nav class="NavBar">
+        <div class="nav-container">
+            <div class="logo">
+                <span>توبــــة</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a class="menu__link" href="index.html"><i class="fas fa-home" aria-hidden="true"></i> <span>الرئيسية</span></a>
+                <a class="menu__link" href="salah_page.html"><i class="fas fa-clock" aria-hidden="true"></i> <span>مواقيت الصلاة</span></a>
+                <a class="menu__link" href="adhkar_page.html"><i class="fas fa-dharmachakra" aria-hidden="true"></i> <span>أذكار</span></a>
+                <a class="menu__link" href="quran_page.html"><i class="fas fa-quran" aria-hidden="true"></i> <span>القرآن الكريم</span></a>
+                <a class="menu__link" href="hadith_page.html"><i class="fas fa-book-open" aria-hidden="true"></i> <span>الحديث الشريف</span></a>
+                <a class="menu__link" href="tawbah_page.html"><i class="fas fa-hands-praying"></i> توبتي</a>
+
+                <div class="dropdown">
+                    <a class="menu__link dropdown-btn active" href="#">
+                        <i class="fas fa-ellipsis-h" aria-hidden="true"></i> <span>المزيد</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a class="menu__link" href="asma_allah.html"><i class="fas fa-book-open"></i> أسماء الله الحسنى</a>
+                        <a class="menu__link" href="stories_page.html"><i class="fas fa-book"></i> قصص إسلامية</a>
+                        <a class="menu__link" href="islamic_figures.html"><i class="fas fa-users"></i> شخصيات إسلامية</a>
+                        <a class="menu__link" href="tasbih.html"><i class="fas fa-praying-hands"></i> مسبحة إلكترونية</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="قائمة" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-quran" aria-hidden="true"></i> القرآن الكريم</h1>
+                <p class="subtitle">تلاوة وتفسير القرآن الكريم كاملًا</p>
+                <div class="verse">
+                    <p><i class="fas fa-quote-right" aria-hidden="true"></i> {إِنَّ هَٰذَا ٱلْقُرْءَانَ يَهْدِى لِلَّتِى هِىَ أَقْوَمُ وَيُبَشِّرُ ٱلْمُؤْمِنِينَ ٱلَّذِينَ يَعْمَلُونَ ٱلصَّٰلِحَٰتِ أَنَّ لَهُمْ أَجْرًۭا كَبِيرًۭا}</p>
+                    <p class="ref">[الإسراء:9]</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sections-container">
+            <div class="section" id="player-section">
+                <div class="section-header">
+                    <h2 class="section-title">مشغل التلاوة</h2>
+                    <p class="section-subtitle">استمع إلى تلاوة القرآن الكريم بصوت أشهر القراء</p>
+                </div>
+                
+                <div class="player-container">
+                    <div class="player-grid">
+                        <div class="player-controls">
+                            <div class="form-group">
+                                <label for="reader-select">اختر القارئ:</label>
+                                <select class="form-control reader-select" id="reader-select">
+                                    <option value="maher">ماهر المعيقلي</option>
+                                    <option value="hudhaify">علي الحذيفي</option>
+                                    <option value="minshawi">محمد صديق المنشاوي</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="surah-select">اختر السورة:</label>
+                                <select class="form-control surah-select" id="surah-select">
+                                    <option value="1">الفاتحة</option>
+                                    <option value="2">البقرة</option>
+                                    <option value="3">آل عمران</option>
+                                    <option value="4">النساء</option>
+                                    <option value="5">المائدة</option>
+                                    <option value="6">الأنعام</option>
+                                    <option value="7">الأعراف</option>
+                                    <option value="8">الأنفال</option>
+                                    <option value="9">التوبة</option>
+                                    <option value="10">يونس</option>
+                                </select>
+                            </div>
+                            
+                            <div class="player-buttons">
+                                <button class="btn play-btn">
+                                    <i class="fas fa-play"></i> تشغيل
+                                </button>
+                                <button class="btn pause-btn" style="display: none;">
+                                    <i class="fas fa-pause"></i> إيقاف
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="player-progress">
+                            <div class="progress-container" id="progress-container">
+                                <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <div class="time-display">
+                                <button class="btn seek-btn" data-seek="-10">
+                                    <i class="fas fa-forward"></i> 10s
+                                </button>
+                                <span class="current-time">00:00</span> / <span class="duration">00:00</span>
+                                <button class="btn seek-btn" data-seek="10">
+                                    <i class="fas fa-backward"></i> 10s
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section" id="quran-section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-book-open" aria-hidden="true"></i> عرض السورة</h2>
+                    <p class="section-subtitle">قراءة وتفسير آيات القرآن الكريم</p>
+                    
+                    <div class="search-container">
+                        <input type="text" id="quran-search" placeholder="ابحث باسم السورة أو رقم الآية أو جزء من الآية...">
+                        <button id="search-btn"><i class="fas fa-search"></i></button>
+                        <div class="search-hint">يمكنك البحث بـ: سورة البقرة، البقرة، 1، 1:1، الرحمن الرحيم</div>
+                        <div class="search-suggestions" id="search-suggestions"></div>
+                    </div>
+                </div>
+                
+                <div class="quran-container">
+                    <h2 class="surah-name">جاري التحميل...</h2>
+                    <div id="quran-text">
+                        <div class="loading-state">
+                            <div class="spinner"></div>
+                            <p>جاري تحميل القرآن الكريم...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-info-circle" aria-hidden="true"></i> عن التطبيق</h3>
+                <p>تطبيق توبة يهدف إلى مساعدة المسلمين في التوبة النصوح والالتزام بالعبادات اليومية</p>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-link" aria-hidden="true"></i> روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html">الصفحة الرئيسية</a></li>
+                    <li><a href="salah_page.html">مواقيت الصلاة</a></li>
+                    <li><a href="adhkar_page.html">الأذكار اليومية</a></li>
+                    <li><a href="quran_page.html">القرآن الكريم</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3><i class="fas fa-envelope" aria-hidden="true"></i> تواصل معنا</h3>
+                <p>للاستفسارات أو المقترحات، يرجى التواصل عبر البريد الإلكتروني:</p>
+                <p>info@tawbaty.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2025</span> توبتي - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+    
+    <button class="scroll-top" id="scrollTop" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>
